@@ -8,7 +8,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AccountResponse {
+public class GetAccountsResponse {
     private List<AccountDto> accounts = new ArrayList<>();
 }
 
