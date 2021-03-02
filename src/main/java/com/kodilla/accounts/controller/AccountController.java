@@ -52,6 +52,23 @@ public class AccountController {
             return new GetAccountsResponse(accountDtoList);
 
     }
+    
+    @RequestMapping(method = RequestMethod.GET, value="/{nrb}")
+    public GetAccountsResponse getAccountByNrb(@PathVariable String nrb){
+
+        LOGGER.info("Get nrb: {}");
+
+        if(!allowGetAccount){
+            LOGGER.info("Getting accounts is disabled");
+            throw new ResponseStatusException(HttpStatus.SERVICE_UNAVAILABLE, "Getting accounts is disabled");
+        }
+
+        List<Account> accountList = new ArrayList<>();
+        accountList.add(new Account(1421L, "72249000059957936727967706", "PLN", new BigDecimal(6525.11)));
+        List<AccountDto> accountDtoList = accountMapper.mapToAccountDtoList(accountList);
+        return new GetAccountsResponse(accountDtoList);
+
+    }
 
 }
 
